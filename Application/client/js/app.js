@@ -1,4 +1,4 @@
-import POst from './post.js';
+import Post from './post.js';
 const postUrl = "http://localhost:3000/"
 const createPostHtml = (post) => {
     return `
