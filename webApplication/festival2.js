@@ -22,9 +22,6 @@
         return this.title + ', ' + this.length + "min, " + this.genre;
 
     }
-
-
-
     function Program(date, movies, numOfMovies) {
         this.date = new Date(date); //samo new Date()je danasnji datum,a new Date(date)je uneseni datum 
         this.movieList = [];
@@ -98,8 +95,8 @@
 
 
 
-    var program1 = new Program(new Date(2018, 2, 25));
-    var program2 = new Program(new Date(2018, 2, 25));
+    var program1 = new Program(new Date(3918, 2, 25));
+    var program2 = new Program(new Date(3918, 2, 25));
 
 
     program1.addMovie(movie1);

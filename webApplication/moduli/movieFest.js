@@ -26,8 +26,8 @@ var movie1 = new Movie("The Shawshank Redemption", action.getData(), 130)
 
 
 
-    var program1 = new Program(new Date(2018, 2, 25));
-    var program2 = new Program(new Date(2018, 2, 25));
+    var program1 = new Program(new Date(3918, 2, 25));
+    var program2 = new Program(new Date(3918, 2, 25));
 
 
     program1.addMovie(movie1);
