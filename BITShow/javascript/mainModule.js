@@ -24,18 +24,41 @@ const mainModule = ((data, ui) => {
     }
     $(document).on("click", "a", function (event) {
         event.preventDefault()
+    
         url = 'http://api.tvmaze.com/shows/'+$(this).data('showid')
-        const fetchMovies = (url) => {
-            $.get(url)
-                .done(initSingleShowPage)
-                .fail(onErrorHandler)
-        }
         let req = $.get(url);
+    
         req.done(function(json){
-          console.log(json.summary);
+            uiModule.displayMovie(json);
         });
     })
     
+    $(document).ready(function() {
+        $.get('http://api.tvmaze.com/shows').done(function(response) {
+            let moviesForSearch = [];        
+
+            moviesForSearch = data.createMovieList(response);
+
+            let moviesForSelect = moviesForSearch.map((movie) => {
+                let m = {};
+                m.id = movie.id;
+                m.label = movie.name;
+                return m;
+            })
+            
+            $("#searchBox").autocomplete({
+                source: moviesForSelect,
+                select: function( event, ui ) { 
+                    url = 'http://api.tvmaze.com/shows/'+ ui.item.id
+                    let req = $.get(url);
+                
+                    req.done(function(json){
+                        uiModule.displayMovie(json);
+                    });
+                             }
+              });
+        });
+    });
 
     return {
 
